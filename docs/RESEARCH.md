@@ -670,7 +670,7 @@ Each rule is tied to the clause it rests on.
 | R9 | **Game state and screenshots are opt-in only.** Default OFF. Toggles are per category. A visible indicator shows while exporting. Only non-secret fields, never other players' chat. Screenshots only through `Screenshot()` and only on explicit player action. Nothing is uploaded except what the player attaches to a prompt. | §1.C.vi; §1.C.v |
 | R10 | **One client, one human.** No multibox features. | 2021-05-05 policy |
 | R11 | **Fail closed and expect channels to disappear.** Use a kill switch and self-tests. No feature may depend on one undocumented behaviour without a degraded mode. | Policy 8; "locking down … workarounds" |
-| R12 | **Disclose risk plainly.** Say ompcraft is unofficial and unapproved, and that no safe harbour exists. Email WoWUI@blizzard.com before any public release and keep the reply. | §10.B.ii, §12.C; policy contact line |
+| R12 | **Disclose risk plainly.** Say ompcraft is unofficial and unapproved, and that no safe harbour exists. Contacting WoWUI@blizzard.com before release was recommended; the owner chose to publish the read-only v0.1.0 without it (2026-11-09). Ask before shipping the uplink (§5.5). | §10.B.ii, §12.C; policy contact line |
 
 ### 5.5 Grey areas
 
