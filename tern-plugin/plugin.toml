@@ -1,0 +1,6 @@
+schema = 1
+id = "ompcraft"
+name = "ompcraft"
+version = "0.1.0"
+description = "Sends your agents' status to the local ompcraft companion, which shows it inside World of Warcraft: Forever."
+window = "window.luau"

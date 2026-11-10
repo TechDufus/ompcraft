@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">ompcraft</title>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2118"/>
+      <stop offset="1" stop-color="#120d09"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe27a"/>
+      <stop offset="0.55" stop-color="#f5b400"/>
+      <stop offset="1" stop-color="#b26b00"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8c26a"/>
+      <stop offset="1" stop-color="#6b4a1c"/>
+    </linearGradient>
+  </defs>
+  <!-- frame -->
+  <rect x="10" y="10" width="236" height="236" rx="44" fill="url(#tile)" stroke="url(#rim)" stroke-width="8"/>
+  <!-- terminal prompt -->
+  <path d="M52 92 L84 116 L52 140" fill="none" stroke="#8fd3ff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="58" y="164" width="44" height="14" rx="7" fill="#8fd3ff"/>
+  <!-- quest marker "!" -->
+  <path d="M156 48 h40 l-8 104 h-24 z" fill="url(#gold)" stroke="#3a2306" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="176" cy="188" r="20" fill="url(#gold)" stroke="#3a2306" stroke-width="5"/>
+  <path d="M164 60 h10 l-4 70 h-4 z" fill="#fff6c8" opacity="0.65"/>
+</svg>

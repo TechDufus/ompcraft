@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ompcraft · your AI coding agents, in your quest log</title>
+<meta name="description" content="ompcraft shows your omp coding agents inside World of Warcraft: Forever: a native quest tracker, achievement-style pop-ups and a parchment page for every reply. Local, free and open source.">
+<meta property="og:title" content="ompcraft · your AI coding agents, in your quest log">
+<meta property="og:description" content="Watch your omp coding agents from inside World of Warcraft: Forever. Native tracker, achievement pop-ups, every reply on parchment. Local and open source.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ompcraft.techdufus.com/">
+<meta property="og:image" content="https://ompcraft.techdufus.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://ompcraft.techdufus.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07090c">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/marcellus.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/world/mulgore.jpg" as="image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" class="sprites" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff2a8"/><stop offset=".5" stop-color="#ffd100"/><stop offset="1" stop-color="#c98a00"/>
+    </linearGradient>
+    <linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8a7a"/><stop offset=".55" stop-color="#e2211b"/><stop offset="1" stop-color="#8f0d08"/>
+    </linearGradient>
+  </defs>
+  <symbol id="m-needs" viewBox="0 0 16 16"><path d="M5.6 1.5h4.8l-1 8.6H6.6z" fill="url(#g-gold)" stroke="#2a1700" stroke-width="1.1" stroke-linejoin="round"/><circle cx="8" cy="13.1" r="2" fill="url(#g-gold)" stroke="#2a1700" stroke-width="1.1"/></symbol>
+  <symbol id="m-failed" viewBox="0 0 16 16"><path d="M5.6 1.5h4.8l-1 8.6H6.6z" fill="url(#g-red)" stroke="#2a0300" stroke-width="1.1" stroke-linejoin="round"/><circle cx="8" cy="13.1" r="2" fill="url(#g-red)" stroke="#2a0300" stroke-width="1.1"/></symbol>
+  <symbol id="m-done" viewBox="0 0 16 16"><path d="M4.4 5.4C4.4 3.2 6 1.6 8.2 1.6s3.7 1.5 3.7 3.4c0 1.6-.9 2.5-2.1 3.3-.9.6-1.2 1-1.2 2" fill="none" stroke="#2a1700" stroke-width="4.2" stroke-linecap="round"/><path d="M4.4 5.4C4.4 3.2 6 1.6 8.2 1.6s3.7 1.5 3.7 3.4c0 1.6-.9 2.5-2.1 3.3-.9.6-1.2 1-1.2 2" fill="none" stroke="url(#g-gold)" stroke-width="2.4" stroke-linecap="round"/><circle cx="8.6" cy="13.6" r="1.9" fill="url(#g-gold)" stroke="#2a1700" stroke-width="1.1"/></symbol>
+  <symbol id="m-working" viewBox="0 0 16 16"><path d="M8 2.2c3.6 0 6.3 2.2 6.3 5s-2.7 5-6.3 5c-.7 0-1.4-.1-2-.2L2.6 13.6l1-2.6C2.4 10.1 1.7 8.7 1.7 7.2c0-2.8 2.7-5 6.3-5z" fill="#3a3d42" stroke="#c9ccd1" stroke-width="1"/><circle cx="5.2" cy="7.2" r="1" fill="#e9ecef"/><circle cx="8" cy="7.2" r="1" fill="#e9ecef"/><circle cx="10.8" cy="7.2" r="1" fill="#e9ecef"/></symbol>
+  <symbol id="i-check" viewBox="0 0 16 16"><path d="M2.5 8.6l3.4 3.4 7.6-8.4" fill="none" stroke="#123b00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 8.6l3.4 3.4 7.6-8.4" fill="none" stroke="#3ee01a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 16 16"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="#3b0300" stroke-width="4.4" stroke-linecap="round"/><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="#ff2a1a" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="a-install" viewBox="0 0 48 48"><path d="M24 7v22M15 21l9 9 9-9" fill="none" stroke="#2a1700" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 7v22M15 21l9 9 9-9" fill="none" stroke="url(#g-gold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 31v8h30v-8" fill="none" stroke="#2a1700" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 31v8h30v-8" fill="none" stroke="url(#g-gold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="a-star" viewBox="0 0 48 48"><path d="M24 6l5.4 11.4 12.4 1.5-9.1 8.6 2.3 12.3L24 33.8l-11 6 2.3-12.3-9.1-8.6 12.4-1.5z" fill="url(#g-gold)" stroke="#2a1700" stroke-width="2.6" stroke-linejoin="round"/><path d="M24 12l3.2 6.9" stroke="#fff6c8" stroke-width="2" stroke-linecap="round" opacity=".7"/></symbol>
+  <symbol id="a-share" viewBox="0 0 48 48"><path d="M33 13L15 24l18 11" fill="none" stroke="#2a1700" stroke-width="7" stroke-linecap="round"/><path d="M33 13L15 24l18 11" fill="none" stroke="url(#g-gold)" stroke-width="3.6" stroke-linecap="round"/><circle cx="34" cy="12" r="6" fill="url(#g-gold)" stroke="#2a1700" stroke-width="2.4"/><circle cx="14" cy="24" r="6" fill="url(#g-gold)" stroke="#2a1700" stroke-width="2.4"/><circle cx="34" cy="36" r="6" fill="url(#g-gold)" stroke="#2a1700" stroke-width="2.4"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="3" fill="#7c0b05" stroke="#e8b33a" stroke-width="1.4"/><rect x="4" y="7" width="8" height="2.2" rx="1" fill="#ffd100"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="3" fill="#7c0b05" stroke="#e8b33a" stroke-width="1.4"/><rect x="4" y="7" width="8" height="2.2" rx="1" fill="#ffd100"/><rect x="6.9" y="4" width="2.2" height="8" rx="1" fill="#ffd100"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 16 16"><rect x="5" y="5" width="8.5" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 10.5V3.5A1.5 1.5 0 0 1 5 2h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- The world: one fixed backdrop that changes zone as you travel down the page. -->
+<div class="world" aria-hidden="true">
+  <img class="world__img is-on" src="img/world/mulgore.jpg" alt="">
+  <img class="world__img" src="img/world/mulgore.jpg" alt="">
+  <div class="world__shade"></div>
+</div>
+
+<!-- HUD: the objective tracker is the site navigation. -->
+<nav class="tracker" aria-label="Sections">
+  <div class="tracker__head">
+    <a class="tracker__title" href="#top">Agents</a>
+    <button class="tracker__toggle" type="button" aria-expanded="true" aria-controls="tracker-body" title="Collapse">
+      <svg class="ico-minus" width="16" height="16"><use href="#i-minus"/></svg>
+      <svg class="ico-plus" width="16" height="16"><use href="#i-plus"/></svg>
+      <span class="sr">Collapse the tracker</span>
+    </button>
+  </div>
+  <div class="tracker__body" id="tracker-body">
+    <p class="tracker__section">ompcraft <span>(6)</span></p>
+    <ol class="tracker__rows">
+      <li><a href="#watch" data-row="watch">
+        <svg class="mark" width="16" height="16"><use href="#m-needs"/></svg>
+        <span class="row__title">Watch your agents</span><span class="row__time" data-tick="21">21s</span>
+        <span class="row__line">- Which agent needs you?</span></a></li>
+      <li><a href="#read" data-row="read">
+        <svg class="mark" width="16" height="16"><use href="#m-working"/></svg>
+        <span class="row__title">Read every reply</span><span class="row__time" data-tick="34">34s</span>
+        <span class="row__line row__line--activity" data-cycle="Rendering the markdown|Drawing the code block|Listing recent steps">- Rendering the markdown</span>
+        <span class="row__line">- Todo <span data-todo="2/5">2/5</span></span></a></li>
+      <li><a href="#popups" data-row="popups">
+        <svg class="mark" width="16" height="16"><use href="#m-done"/></svg>
+        <span class="row__title">Pop-ups</span><span class="row__time">4m</span>
+        <span class="row__line">- 4m 12s · 38K tok · $0.61</span></a></li>
+      <li><a href="#settings" data-row="settings">
+        <svg class="mark" width="16" height="16"><use href="#m-done"/></svg>
+        <span class="row__title">Make it yours</span><span class="row__time">2m</span>
+        <span class="row__line">- Options › AddOns › Ompcraft</span></a></li>
+      <li><a href="#how" data-row="how">
+        <svg class="mark" width="16" height="16"><use href="#m-working"/></svg>
+        <span class="row__title">How it works</span><span class="row__time" data-tick="8">8s</span>
+        <span class="row__line row__line--activity" data-cycle="Ringing the doorbell|Loading slot 042|Syncing with Tern">- Ringing the doorbell</span></a></li>
+      <li><a href="#safe" data-row="safe">
+        <svg class="mark" width="16" height="16"><use href="#m-failed"/></svg>
+        <span class="row__title">Is it safe?</span>
+        <span class="row__line">- Read this before you install</span></a></li>
+    </ol>
+    <p class="tracker__idle"><a href="#install">Install · 1 line</a></p>
+  </div>
+</nav>
+
+<!-- HUD: the zone plaque that sits above the minimap. -->
+<p class="plaque" aria-live="polite"><span data-zone-name>Mulgore</span></p>
+
+<main id="top">
+
+  <!-- 1 · Arriving in the zone -->
+  <section class="zone" data-zone="mulgore" aria-labelledby="zone-title">
+    <canvas class="motes" aria-hidden="true"></canvas>
+    <hgroup class="zonetext">
+      <h1 id="zone-title">ompcraft</h1>
+      <p class="zonetext__sub">Your AI coding agents, in your quest log</p>
+    </hgroup>
+    <p class="zone__lede">Watch your <a href="https://github.com/can1357/oh-my-pi">omp</a> agents work without leaving <b>World of Warcraft: Forever</b>. A native objective tracker, achievement pop-ups when one finishes or needs you, and every reply on parchment, one click away.</p>
+
+    <div class="alerts" aria-hidden="true">
+      <img class="plate is-in" data-plate src="img/popups/finished.png" alt="" width="302" height="92">
+    </div>
+
+    <div class="chat" aria-label="Install command">
+      <p class="chat__line"><span class="chat__sys">[ompcraft]</span> Install in one line, then start the game: <button class="chat__link" type="button" data-copy="#install-cmd" title="Click to copy">[<code id="install-cmd">curl -fsSL https://raw.githubusercontent.com/TechDufus/ompcraft/main/install.sh | sh</code>]</button></p>
+    </div>
+  </section>
+
+  <!-- 2 · The tracker -->
+  <section class="leg" id="watch" data-zone="barrens" data-zone-name="The Barrens" aria-labelledby="watch-h">
+    <div class="leg__text">
+      <h2 id="watch-h">Every agent, at a glance</h2>
+      <p>Agents sit in a quest-style tracker, top left by default, or under your objectives or wherever you drag it, grouped by Tern session. Working agents show what they're doing right now and how far through their todo list they are. Idle ones fold into a single line, so the list stays short.</p>
+      <div class="tooltip">
+        <p class="tooltip__title">Quest markers</p>
+        <ul class="legend">
+          <li><svg width="18" height="18"><use href="#m-needs"/></svg><span><b class="y">Needs you.</b> It asked a question and is waiting.</span></li>
+          <li><svg width="18" height="18"><use href="#m-done"/></svg><span><b class="y">Finished.</b> You haven't looked yet.</span></li>
+          <li><svg width="18" height="18"><use href="#m-working"/></svg><span><b>Working.</b> Live activity and todo progress.</span></li>
+          <li><svg width="18" height="18"><use href="#m-failed"/></svg><span><b class="r">Failed or exited.</b> Something went wrong.</span></li>
+        </ul>
+        <p class="tooltip__flavor">Remote hosts attached to your Tern window show up too, labelled with their name.</p>
+      </div>
+    </div>
+    <figure class="shot shot--tracker">
+      <img src="img/tracker.png" width="264" height="352" alt="The ompcraft tracker in the game: agents grouped under api-gateway, docs-site and infra on build-box. Two are working with their current step and todo count, one needs you, one finished, and four are idle." loading="lazy">
+      <figcaption>In game, at native size ×2. Demo agents.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 3 · The agent page -->
+  <section class="leg leg--flip" id="read" data-zone="ashenvale" data-zone-name="Ashenvale" aria-labelledby="read-h">
+    <div class="leg__text">
+      <h2 id="read-h">Read the reply without alt-tabbing</h2>
+      <p>Click an agent and its last reply opens on parchment, formatted the way it was written: headings, nested lists, inline code, code blocks and tables. Below it are the turn's recent tool steps, and the model and session it ran in.</p>
+      <div class="tooltip">
+        <p class="tooltip__title">Agent page</p>
+        <p>Up to 12 lines of each code block, indentation intact</p>
+        <p>Recent steps marked done, failed or running</p>
+        <p>Resize it; it remembers</p>
+        <p class="g">Reply text never leaves your PC. Keep it out of the game entirely with <code>ompcraft config detail off</code></p>
+      </div>
+    </div>
+    <figure class="shot shot--detail">
+      <img src="img/detail.png" width="434" height="580" alt="The agent page in game: parchment with the agent's question as a heading, two options as a nested list, a Go code block, a three-row table, and six recent tool steps with green checks and one red cross." loading="lazy">
+      <figcaption>In game. Demo agent.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 4 · Pop-ups -->
+  <section class="leg" id="popups" data-zone="felwood" data-zone-name="Felwood" aria-labelledby="popups-h">
+    <div class="leg__text">
+      <h2 id="popups-h">Pop-ups that wait until you're out of combat</h2>
+      <p>When an agent finishes, needs you, fails or exits, you get an achievement-style pop-up with its time, tokens and cost. Pull a boss and they queue up; they arrive when combat ends.</p>
+      <div class="tooltip">
+        <p class="tooltip__title">Pop-ups</p>
+        <p>Click one to open that agent</p>
+        <p>Sound and a chat line, each optional</p>
+        <p class="tooltip__flavor">All four here are real in-game captures of demo agents.</p>
+      </div>
+    </div>
+    <div class="stack">
+      <img class="plate" src="img/popups/needs.png" width="248" height="75" alt="Needs you: Write the 2.0 migration guide." loading="lazy">
+      <img class="plate plate--wide" src="img/popups/finished.png" width="302" height="92" alt="Finished: Migrate CI to the new runners, 4m 12s, 38K tokens, $0.61." loading="lazy">
+      <img class="plate" src="img/popups/failed.png" width="248" height="75" alt="Failed: Upgrade the Postgres driver." loading="lazy">
+      <img class="plate" src="img/popups/exited.png" width="248" height="75" alt="Exited: Triage overnight alerts." loading="lazy">
+    </div>
+  </section>
+
+  <!-- 5 · Settings -->
+  <section class="leg leg--flip leg--wide" id="settings" data-zone="ashenvale-dusk" data-zone-name="Ashenvale" aria-labelledby="settings-h">
+    <div class="leg__text">
+      <h2 id="settings-h">Make it yours</h2>
+      <p>A native settings page lives under <b>Options › AddOns › Ompcraft</b>, or type <code>/oc config</code>.</p>
+      <div class="tooltip">
+        <p class="tooltip__title">Settings</p>
+        <p>Top left, under your quest objectives, top right, or wherever you drag it</p>
+        <p>Lock, scale and cap its height</p>
+        <p>Choose which agent states and detail lines show</p>
+        <p>Hide it in combat, or in dungeons, raids and PvP</p>
+        <p>Pick which pop-ups, sounds and chat lines you get</p>
+      </div>
+    </div>
+    <figure class="shot shot--settings">
+      <img src="img/settings.png" width="920" height="734" alt="The Ompcraft settings page in the game's Options window: position, lock, scale and max height, then switches for agent states, detail lines, visibility and alerts." loading="lazy">
+      <figcaption>In game.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 5 · How it works, as a quest log entry -->
+  <section class="leg leg--quest" id="how" data-zone="darkshore" data-zone-name="Darkshore" aria-labelledby="how-h">
+    <article class="questlog">
+      <h2 id="how-h">How it works</h2>
+      <p>WoW addons can't open a socket or read a file. ompcraft passes messages the only ways an addon can notice them: addon files it can load on demand, and sound files whose presence it can check.</p>
+      <h3>Objectives</h3>
+      <ol class="objectives">
+        <li><span>Your omp agents report to Tern, on this PC or on a remote host</span><span class="ok">1/1</span></li>
+        <li><span>The Tern plugin hands their state to the companion on 127.0.0.1, every 500&nbsp;ms</span><span class="ok">1/1</span></li>
+        <li><span>The companion writes plain-data Lua into a pre-installed slot addon and rings a doorbell file</span><span class="ok">1/1</span></li>
+        <li><span>The addon hears the doorbell and loads the slot: 67–174&nbsp;ms in testing, no <code>/reload</code></span><span class="ok">1/1</span></li>
+      </ol>
+      <h3>Rewards</h3>
+      <p>You will receive:</p>
+      <ul class="rewards">
+        <li>Nothing leaves your PC</li>
+        <li>No screen capture</li>
+        <li>No input sent to the game</li>
+        <li>Snapshot files wiped when the game or companion exits</li>
+      </ul>
+      <p class="questlog__more">The full design: <a href="https://github.com/TechDufus/ompcraft/blob/main/docs/PROTOCOL.md">PROTOCOL.md</a></p>
+    </article>
+  </section>
+
+  <!-- 6 · Safety, in tooltip truths -->
+  <section class="leg" id="safe" data-zone="dustwallow" data-zone-name="Dustwallow Marsh" aria-labelledby="safe-h">
+    <div class="tooltip tooltip--item">
+      <h2 id="safe-h" class="tooltip__title tooltip__title--big">Is it safe?</h2>
+      <p class="r">Unofficial fan project · Not approved by Blizzard</p>
+      <p class="g">Uses: public addon APIs, plus a separate program that writes data files into your <code>Interface/AddOns</code> folder. WeakAuras Companion and the TSM and Wago apps have done the same for years.</p>
+      <p>Never: reads or changes game memory · injects into the client · captures your screen · sends keystrokes, clicks or controller input · plays the game for you.</p>
+      <p>Respects combat lockdown, Blizzard's secret-value restrictions and the add-on policy: free, visible source, no ads, no chat spam.</p>
+      <p class="tooltip__flavor">"No Blizzard text approves or forbids a tool like this. It relies on undocumented client behaviour that can change at any time. Use it at your own risk."</p>
+      <p class="tooltip__link"><a href="https://github.com/TechDufus/ompcraft/blob/main/docs/RESEARCH.md#5-blizzard-tos-and-add-on-policy">Read the policy research</a></p>
+    </div>
+  </section>
+
+  <!-- 7 · The close -->
+  <section class="leg leg--close" id="install" data-zone="mulgore" data-zone-name="Mulgore" aria-labelledby="install-h">
+    <h2 id="install-h">One line. Then log in.</h2>
+    <div class="chat chat--big">
+      <p class="chat__line"><span class="chat__sys">[ompcraft]</span> Installs the companion, the addon and the Tern plugin, and starts a user service:</p>
+      <div class="chat__box">
+        <code id="install-cmd-2">curl -fsSL https://raw.githubusercontent.com/TechDufus/ompcraft/main/install.sh | sh</code>
+        <button class="chat__copy" type="button" data-copy="#install-cmd-2"><svg width="16" height="16"><use href="#i-copy"/></svg><span>Copy</span></button>
+      </div>
+      <p class="chat__line chat__line--whisper">Needs WoW: Forever and <a href="https://stencil.so">Stencil Tern</a> running omp. Tested on Linux with Proton; macOS is planned. Something off? <code>ompcraft doctor</code> says what to fix.</p>
+    </div>
+    <p class="close__links"><a href="https://github.com/TechDufus/ompcraft">Source on GitHub</a> · <a href="https://github.com/TechDufus/ompcraft#readme">README</a> · MIT license</p>
+  </section>
+
+</main>
+
+<!-- HUD: the action bar (keys 1, 2 and 3 work) and the version line under it. -->
+<div class="hud-bottom">
+  <div class="bar" role="toolbar" aria-label="Actions">
+    <button class="slot" type="button" data-action="install" aria-keyshortcuts="1" aria-describedby="slot-tip-1">
+      <svg width="48" height="48" aria-hidden="true"><use href="#a-install"/></svg>
+      <span class="slot__key" aria-hidden="true">1</span><span class="slot__name">Install</span><span class="slot__cd" aria-hidden="true"></span>
+    </button>
+    <a class="slot" href="https://github.com/TechDufus/ompcraft" target="_blank" rel="noopener" data-action="star" aria-keyshortcuts="2" aria-describedby="slot-tip-2">
+      <svg width="48" height="48" aria-hidden="true"><use href="#a-star"/></svg>
+      <span class="slot__key" aria-hidden="true">2</span><span class="slot__name">Star</span><span class="slot__cd" aria-hidden="true"></span>
+    </a>
+    <button class="slot" type="button" data-action="share" aria-keyshortcuts="3" aria-describedby="slot-tip-3">
+      <svg width="48" height="48" aria-hidden="true"><use href="#a-share"/></svg>
+      <span class="slot__key" aria-hidden="true">3</span><span class="slot__name">Share</span><span class="slot__cd" aria-hidden="true"></span>
+    </button>
+    <div class="bar__tips">
+      <p role="tooltip" id="slot-tip-1" class="tooltip tooltip--slot"><b>Install</b><span class="g">Use: copy the one-line installer.</span></p>
+      <p role="tooltip" id="slot-tip-2" class="tooltip tooltip--slot"><b>Star</b><span class="g">Use: open ompcraft on GitHub.</span></p>
+      <p role="tooltip" id="slot-tip-3" class="tooltip tooltip--slot"><b>Share</b><span class="g">Use: share this page with your guild.</span></p>
+    </div>
+  </div>
+  <p class="version-line">Unofficial<span class="vl-long"> fan project</span> · not approved by Blizzard · <span class="vl-long">agents shown are </span>demo data</p>
+</div>
+
+<!-- HUD: the game's centre-screen message line. -->
+<p class="uierror" aria-live="assertive" role="status"></p>
+
+<footer class="version">
+  <p>Unofficial fan project, not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. Zone screenshots © Blizzard Entertainment, from the official World of Warcraft: Forever page, shown unaltered. Agents shown are demo data from <code>ompcraft demo</code>.</p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

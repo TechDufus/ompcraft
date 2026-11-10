@@ -1,0 +1,21 @@
+## Interface: 16001
+## Title: Ompcraft
+## Notes: Shows your omp coding agents (run in Stencil Tern) inside the game, in the look of the objective tracker. Read-only. Needs the ompcraft companion running on this computer.
+## Author: TechDufus
+## Version: 0.1.0
+## IconTexture: Interface\Icons\INV_Misc_QuestionMark
+## SavedVariables: OmpcraftDB
+## AddonCompartmentFunc: Ompcraft_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: Ompcraft_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: Ompcraft_OnAddonCompartmentLeave
+
+Core\Init.lua
+Core\Util.lua
+Core\Store.lua
+Core\Link.lua
+UI\Style.lua
+UI\Tracker.lua
+UI\Detail.lua
+UI\Toasts.lua
+UI\Settings.lua
+Core\Slash.lua

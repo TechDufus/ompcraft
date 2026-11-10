@@ -1,0 +1,8 @@
+# Build output
+/companion/ompcraft
+/companion/ompcraft.exe
+/dist/
+
+# Local test scratch
+/addon/tests/tmp/
+*.tmp

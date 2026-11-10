@@ -1,0 +1,58 @@
+name: release
+
+# Push a tag like v0.2.0 to publish prebuilt binaries that install.sh downloads.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version-file: go.mod
+      - name: Check versions match the tag
+        run: |
+          set -eu
+          want=${GITHUB_REF_NAME#v}
+          toc=$(sed -n 's/^## Version: *//p' addon/Ompcraft/Ompcraft.toc | tr -d '\r')
+          bin=$(sed -n 's/^var version = "\(.*\)"/\1/p' companion/cmd/ompcraft/main.go)
+          plugin=$(sed -n 's/^version = "\(.*\)"/\1/p' tern-plugin/plugin.toml)
+          for v in "$toc" "$bin" "$plugin"; do
+            [ "$v" = "$want" ] || { echo "version mismatch: tag $want, toc $toc, binary $bin, plugin $plugin"; exit 1; }
+          done
+      - name: Test
+        run: |
+          sudo apt-get update && sudo apt-get install -y lua5.1
+          go vet ./... && go test ./...
+          lua5.1 addon/tests/run.lua
+      - name: Build
+        run: |
+          set -eu
+          mkdir -p dist
+          for target in linux/amd64 linux/arm64 darwin/amd64 darwin/arm64; do
+            os=${target%/*}; arch=${target#*/}
+            CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build -trimpath \
+              -ldflags "-s -w -X main.version=${GITHUB_REF_NAME#v} -X main.channel=release" \
+              -o dist/ompcraft ./companion/cmd/ompcraft
+            tar -C dist -czf "dist/ompcraft_${os}_${arch}.tar.gz" ompcraft
+            rm dist/ompcraft
+          done
+          (cd dist && sha256sum ompcraft_*.tar.gz > checksums.txt)
+      - name: Sign checksums
+        env:
+          OMPCRAFT_SIGNING_KEY: ${{ secrets.OMPCRAFT_SIGNING_KEY }}
+        run: |
+          set -eu
+          [ -n "$OMPCRAFT_SIGNING_KEY" ] || { echo "OMPCRAFT_SIGNING_KEY secret is not set"; exit 1; }
+          go run ./companion/cmd/ompcraft release-sign dist/checksums.txt
+          test -s dist/checksums.txt.sig
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --generate-notes --verify-tag

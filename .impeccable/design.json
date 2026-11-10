@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T04:18:04Z",
+  "title": "Design System: ompcraft",
+  "extensions": {
+    "colorMeta": {
+      "quest-gold": {
+        "role": "primary",
+        "displayName": "Quest-Tracker Gold",
+        "canonical": "#ffd100",
+        "oklch": "oklch(87% 0.179 93)",
+        "tonalRamp": [
+          "#0f0b01",
+          "#2e2402",
+          "#504007",
+          "#755f03",
+          "#9b8016",
+          "#c3a224",
+          "#e5c762",
+          "#feeebc"
+        ]
+      },
+      "gold-deep": {
+        "role": "primary",
+        "displayName": "Deep Gold",
+        "canonical": "#c98a00",
+        "oklch": "oklch(68% 0.142 76)",
+        "tonalRamp": [
+          "#100a03",
+          "#332102",
+          "#583c07",
+          "#825803",
+          "#ab7717",
+          "#d69725",
+          "#eec17e",
+          "#ffebd0"
+        ]
+      },
+      "bronze": {
+        "role": "secondary",
+        "displayName": "Frame Bronze",
+        "canonical": "#8a6a2c",
+        "oklch": "oklch(54% 0.089 81)",
+        "tonalRamp": [
+          "#0e0b05",
+          "#2f230d",
+          "#543e13",
+          "#7b5b1b",
+          "#9d7d40",
+          "#c1a063",
+          "#dec69c",
+          "#fbedd4"
+        ]
+      },
+      "bronze-bright": {
+        "role": "secondary",
+        "displayName": "Bright Bronze",
+        "canonical": "#e2bd6a",
+        "oklch": "oklch(81% 0.111 86)",
+        "tonalRamp": [
+          "#0e0b04",
+          "#302304",
+          "#543e05",
+          "#795d12",
+          "#a07d25",
+          "#c4a04e",
+          "#e0c68f",
+          "#fcedcd"
+        ]
+      },
+      "objective-yellow": {
+        "role": "primary",
+        "displayName": "Objective Yellow",
+        "canonical": "#f0c800",
+        "oklch": "oklch(84% 0.173 94)",
+        "tonalRamp": [
+          "#0f0b01",
+          "#2e2400",
+          "#4f4101",
+          "#73600d",
+          "#9a8003",
+          "#c3a211",
+          "#e2c867",
+          "#fdefb9"
+        ]
+      },
+      "link-gold": {
+        "role": "primary",
+        "displayName": "Link Gold",
+        "canonical": "#ffe27a",
+        "oklch": "oklch(92% 0.128 94)",
+        "tonalRamp": [
+          "#0e0b03",
+          "#2d2402",
+          "#4f4107",
+          "#745f04",
+          "#998017",
+          "#bfa339",
+          "#dcc985",
+          "#faefc8"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#06080b",
+        "oklch": "oklch(13% 0.008 254)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "tooltip-navy": {
+        "role": "neutral",
+        "displayName": "Tooltip Navy",
+        "canonical": "rgba(8,11,24,.93)",
+        "oklch": "oklch(15% 0.028 272)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#23252b",
+          "#3e414d",
+          "#5b6172",
+          "#7c8294",
+          "#9fa4b7",
+          "#c4c9d6",
+          "#eceef6"
+        ]
+      },
+      "tooltip-edge": {
+        "role": "neutral",
+        "displayName": "Silver Edge",
+        "canonical": "#a7a9b0",
+        "oklch": "oklch(74% 0.010 273)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242527",
+          "#414246",
+          "#5f6167",
+          "#808289",
+          "#a3a5ac",
+          "#c7c9ce",
+          "#edeef1"
+        ]
+      },
+      "parchment": {
+        "role": "neutral",
+        "displayName": "Parchment",
+        "canonical": "#ead8ad",
+        "oklch": "oklch(89% 0.060 88)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#2a2416",
+          "#4c4126",
+          "#6f5f38",
+          "#918158",
+          "#b5a37b",
+          "#d4c8ab",
+          "#f5eedd"
+        ]
+      },
+      "parchment-dark": {
+        "role": "neutral",
+        "displayName": "Parchment Dark",
+        "canonical": "#cdb07a",
+        "oklch": "oklch(77% 0.078 83)",
+        "tonalRamp": [
+          "#0e0b06",
+          "#2d2310",
+          "#513f1b",
+          "#775d27",
+          "#9a7e49",
+          "#bda16c",
+          "#dbc6a1",
+          "#f9edd7"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#2b1a0b",
+        "oklch": "oklch(24% 0.037 61)",
+        "tonalRamp": [
+          "#0d0b09",
+          "#2b231d",
+          "#4d3f33",
+          "#715d4c",
+          "#937e6c",
+          "#b7a08e",
+          "#d6c6b9",
+          "#f6ece5"
+        ]
+      },
+      "ink-heading": {
+        "role": "neutral",
+        "displayName": "Ink Heading",
+        "canonical": "#3a2306",
+        "oklch": "oklch(28% 0.054 68)",
+        "tonalRamp": [
+          "#0d0b08",
+          "#2d2318",
+          "#503e2b",
+          "#765c3f",
+          "#987d5f",
+          "#bc9f81",
+          "#dac5af",
+          "#f9ecdf"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#f3ead6",
+        "oklch": "oklch(94% 0.028 87)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#28251e",
+          "#474136",
+          "#68604f",
+          "#8a826f",
+          "#ada492",
+          "#cfc9bb",
+          "#f2eee6"
+        ]
+      },
+      "text-dim": {
+        "role": "neutral",
+        "displayName": "Dim Paper",
+        "canonical": "#c9c2b2",
+        "oklch": "oklch(82% 0.023 87)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#27251f",
+          "#464238",
+          "#676152",
+          "#888273",
+          "#aba495",
+          "#cec9bd",
+          "#f1eee7"
+        ]
+      },
+      "use-green": {
+        "role": "tertiary",
+        "displayName": "Use-Line Green",
+        "canonical": "#22ff1a",
+        "oklch": "oklch(87% 0.289 142)",
+        "tonalRamp": [
+          "#020f01",
+          "#002f00",
+          "#015100",
+          "#0f760b",
+          "#239d1e",
+          "#12c70c",
+          "#70e968",
+          "#ccffc6"
+        ]
+      },
+      "alert-red": {
+        "role": "tertiary",
+        "displayName": "Warning Red",
+        "canonical": "#ff4a3d",
+        "oklch": "oklch(67% 0.219 29)",
+        "tonalRamp": [
+          "#170604",
+          "#4a0705",
+          "#7e0a08",
+          "#b90006",
+          "#e93128",
+          "#fd7566",
+          "#fcb5aa",
+          "#fee9e6"
+        ]
+      },
+      "chat-system": {
+        "role": "tertiary",
+        "displayName": "Chat System Orange",
+        "canonical": "#ff9b3d",
+        "oklch": "oklch(78% 0.158 60)",
+        "tonalRamp": [
+          "#120903",
+          "#3b1c00",
+          "#613508",
+          "#8f4f06",
+          "#bb6c1a",
+          "#eb8928",
+          "#ffb87e",
+          "#ffeadb"
+        ]
+      },
+      "chat-whisper": {
+        "role": "tertiary",
+        "displayName": "Chat Whisper Pink",
+        "canonical": "#f2a6ff",
+        "oklch": "oklch(83% 0.145 322)",
+        "tonalRamp": [
+          "#0f0811",
+          "#331937",
+          "#5b2b63",
+          "#854092",
+          "#a962b6",
+          "#ce85db",
+          "#e8b4f1",
+          "#fbe6ff"
+        ]
+      },
+      "chat-link": {
+        "role": "tertiary",
+        "displayName": "Chat Link Cyan",
+        "canonical": "#71d5ff",
+        "oklch": "oklch(83% 0.111 228)",
+        "tonalRamp": [
+          "#050d11",
+          "#032938",
+          "#0b495e",
+          "#086b8b",
+          "#1e8fb6",
+          "#4eb2db",
+          "#93d4f1",
+          "#dbf3fe"
+        ]
+      },
+      "quest-link": {
+        "role": "neutral",
+        "displayName": "Scorched Brown",
+        "canonical": "#7b2b06",
+        "oklch": "oklch(40% 0.120 41)",
+        "tonalRamp": [
+          "#120906",
+          "#3a1b10",
+          "#682f1a",
+          "#984526",
+          "#be6747",
+          "#e48a6a",
+          "#f9b7a0",
+          "#fee9e2"
+        ]
+      },
+      "objective-done": {
+        "role": "neutral",
+        "displayName": "Objective Green",
+        "canonical": "#1d5a07",
+        "oklch": "oklch(41% 0.126 140)",
+        "tonalRamp": [
+          "#070d06",
+          "#152b10",
+          "#244d1a",
+          "#367225",
+          "#579448",
+          "#7ab86b",
+          "#acd8a1",
+          "#ddf8d7"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single zone-text h1; gold Marcellus with outline glow."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2s in gold Marcellus."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Zone sub-line, tracker/quest-log headings, centre-screen message."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy in Alegreya Sans, 46ch columns."
+      },
+      "tooltip-text": {
+        "displayName": "Tooltip Text",
+        "purpose": "Tooltip, chat and legend copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Tracker row titles, slot names, copy button."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Figcaptions, footer and version line."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Install command and CLI/slash commands in JetBrains Mono."
+      }
+    },
+    "shadows": [
+      {
+        "name": "plaque",
+        "value": "inset 0 0 0 1px rgba(0,0,0,.8), 0 4px 12px rgba(0,0,0,.4)",
+        "purpose": "Zone plaque."
+      },
+      {
+        "name": "tooltip",
+        "value": "inset 0 0 0 1px rgba(0,0,0,.9), 0 12px 28px rgba(0,0,0,.5)",
+        "purpose": "Tooltips and the item tooltip."
+      },
+      {
+        "name": "action-bar",
+        "value": "inset 0 1px 0 rgba(255,220,140,.25), 0 -6px 24px rgba(0,0,0,.45)",
+        "purpose": "Docked action bar."
+      },
+      {
+        "name": "action-slot",
+        "value": "inset 0 0 0 1px #8a6a2c, inset 0 0 12px rgba(0,0,0,.8), 0 2px 4px rgba(0,0,0,.6)",
+        "purpose": "Action slot at rest; hover swaps ring to inset 0 0 0 2px #ffe27a."
+      },
+      {
+        "name": "capture",
+        "value": "0 30px 70px rgba(0,0,0,.65)",
+        "purpose": "Screenshots lifted off the zone."
+      },
+      {
+        "name": "plate-drop",
+        "value": "drop-shadow(0 12px 18px rgba(0,0,0,.55))",
+        "purpose": "Pop-up plates."
+      },
+      {
+        "name": "parchment-drop",
+        "value": "drop-shadow(0 30px 40px rgba(0,0,0,.6))",
+        "purpose": "Quest-log parchment."
+      },
+      {
+        "name": "text-outline",
+        "value": "0 0 1px #000, 0 1px 1px #000, 0 0 3px rgba(0,0,0,.9)",
+        "purpose": "Outline for small text set on the world."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Every transition and keyframe easing."
+      },
+      {
+        "name": "zone-crossfade",
+        "value": "opacity 1.4s ease-out; scale 12s linear",
+        "purpose": "World backdrop changes zone."
+      },
+      {
+        "name": "zone-in",
+        "value": "2.4s (subtitle +.45s delay)",
+        "purpose": "Zone text fades in from blur with a letter-spacing settle."
+      },
+      {
+        "name": "plate-in",
+        "value": ".5s opacity, .7s transform; shine 1.3s",
+        "purpose": "Hero pop-up slide and shine sweep."
+      },
+      {
+        "name": "cooldown",
+        "value": "1.6s linear conic sweep",
+        "purpose": "Action slot activation."
+      },
+      {
+        "name": "row-update",
+        "value": ".25s hover, .35s text swap, .5s plaque swap",
+        "purpose": "Tracker and plaque updates."
+      },
+      {
+        "name": "ui-error",
+        "value": ".08s in, .3s out, shown 2.6s",
+        "purpose": "Centre-screen message."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "max-width: 1180px"
+      },
+      {
+        "name": "short-desktop",
+        "value": "min-width: 1181px and max-height: 820px"
+      },
+      {
+        "name": "phone",
+        "value": "max-width: 640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Tracker Row",
+      "kind": "nav",
+      "refersTo": "tracker-row",
+      "description": "A site section rendered as a quest-tracker row; hover/current tints and brightens the title.",
+      "html": "<div class=\"ds-tracker\"><p class=\"ds-tracker-section\">ompcraft (6)</p><a class=\"ds-tracker-row\" href=\"#\"><span class=\"ds-mark\"></span><span class=\"ds-row-title\">Watch your agents</span><span class=\"ds-row-time\">21s</span><span class=\"ds-row-line\">- Which agent needs you?</span></a><a class=\"ds-tracker-row is-current\" href=\"#\"><span class=\"ds-mark\"></span><span class=\"ds-row-title\">Read every reply</span><span class=\"ds-row-time\">34s</span><span class=\"ds-row-line\">- Rendering the markdown</span></a></div>",
+      "css": ".ds-tracker{width:300px;padding:6px 0;background:linear-gradient(90deg,rgba(4,6,9,.55),rgba(4,6,9,0));font-family:var(--body,'Alegreya Sans',sans-serif);text-shadow:0 0 1px #000,0 1px 1px #000,0 0 3px rgba(0,0,0,.9)}.ds-tracker-section{margin:0 0 4px;padding:0 6px 3px;font:400 1rem var(--display,Marcellus,Georgia,serif);color:var(--gold,#ffd100);border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(226,189,106,.7),rgba(226,189,106,0)) 1}.ds-tracker-row{display:grid;grid-template-columns:18px 1fr auto;column-gap:6px;padding:4px 6px 5px;border-radius:3px;text-decoration:none;transition:background-color .25s cubic-bezier(.16,1,.3,1)}.ds-mark{grid-row:1;margin-top:3px;width:12px;height:14px;background:linear-gradient(180deg,#fff2a8,#ffd100 50%,#c98a00);border-radius:3px}.ds-row-title{font:500 .98rem/1.35 var(--body,'Alegreya Sans',sans-serif);color:#f0c800;letter-spacing:.01em}.ds-row-time{font:500 .82rem/1.6 var(--body,'Alegreya Sans',sans-serif);color:#d7d0c1;font-variant-numeric:tabular-nums}.ds-row-line{grid-column:2/4;font:400 .9rem/1.35 var(--body,'Alegreya Sans',sans-serif);color:#e2ddd2}.ds-tracker-row:hover,.ds-tracker-row.is-current{background:rgba(255,209,0,.09)}.ds-tracker-row:hover .ds-row-title,.ds-tracker-row.is-current .ds-row-title{color:#fff1a6}.ds-tracker-row:focus-visible{outline:2px solid #ffd100;outline-offset:3px}"
+    },
+    {
+      "name": "Zone Plaque",
+      "kind": "custom",
+      "refersTo": "zone-plaque",
+      "description": "Small bronze-framed zone name plate, top-right.",
+      "html": "<p class=\"ds-plaque\"><span>Mulgore</span></p>",
+      "css": ".ds-plaque{display:inline-block;margin:0;min-width:10rem;padding:4px 16px 5px;text-align:center;font:400 .95rem var(--display,Marcellus,Georgia,serif);color:var(--gold,#ffd100);text-shadow:0 0 1px #000,0 1px 1px #000,0 0 3px rgba(0,0,0,.9);background:rgba(8,6,3,.78);border:1px solid var(--bronze,#8a6a2c);border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.8),0 4px 12px rgba(0,0,0,.4)}"
+    },
+    {
+      "name": "Tooltip",
+      "kind": "card",
+      "refersTo": "tooltip",
+      "description": "The universal content container: navy GameTooltip with silver edge, white title, Use: line and gold flavor.",
+      "html": "<div class=\"ds-tooltip\"><p class=\"ds-tooltip-title\">Agent page</p><p>Up to 12 lines of each code block</p><p class=\"ds-use\">Reply text never leaves your PC.</p><p class=\"ds-flavor\">All real in-game captures of demo agents.</p></div>",
+      "css": ".ds-tooltip{max-width:340px;padding:12px 16px 14px;background:rgba(8,11,24,.93);color:var(--text,#f3ead6);border:1px solid var(--tip-edge,#a7a9b0);border-radius:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.9),0 12px 28px rgba(0,0,0,.5);font:400 1rem/1.45 var(--body,'Alegreya Sans',sans-serif)}.ds-tooltip p{margin:0 0 8px}.ds-tooltip-title{font:500 1.08rem var(--body,'Alegreya Sans',sans-serif);color:#fff}.ds-use{color:var(--green,#22ff1a)}.ds-flavor{margin:10px 0 0!important;color:var(--gold,#ffd100);font-style:italic}"
+    },
+    {
+      "name": "Action Slot",
+      "kind": "button",
+      "refersTo": "action-slot",
+      "description": "A 62px action-bar button with keybind numeral, name, and a conic cooldown sweep on press.",
+      "html": "<button class=\"ds-slot\" type=\"button\"><span class=\"ds-slot-icon\"></span><span class=\"ds-slot-key\">1</span><span class=\"ds-slot-name\">Install</span></button>",
+      "css": ".ds-slot{all:unset;position:relative;cursor:pointer;width:62px;height:62px;display:grid;place-items:center;background:radial-gradient(circle at 50% 30%,#3b2a14,#120b04 75%);border:2px solid #1a1a1a;border-radius:5px;box-shadow:inset 0 0 0 1px #8a6a2c,inset 0 0 12px rgba(0,0,0,.8),0 2px 4px rgba(0,0,0,.6);transition:box-shadow .2s cubic-bezier(.16,1,.3,1),transform .1s}.ds-slot-icon{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 40% 30%,#fff2a8,#ffd100 55%,#c98a00);box-shadow:0 2px 2px rgba(0,0,0,.8)}.ds-slot-key{position:absolute;top:2px;right:5px;font:700 .82rem var(--body,'Alegreya Sans',sans-serif);color:#f2f2f2;text-shadow:0 0 1px #000,0 1px 1px #000}.ds-slot-name{position:absolute;left:0;right:0;bottom:2px;font:500 .72rem var(--body,'Alegreya Sans',sans-serif);color:#fff;text-align:center;text-shadow:0 0 1px #000,0 1px 1px #000}.ds-slot:hover,.ds-slot:focus-visible{box-shadow:inset 0 0 0 2px #ffe27a,0 2px 4px rgba(0,0,0,.6);background:radial-gradient(circle at 50% 30%,#5a4020,#1d1206 75%)}.ds-slot:active{transform:translateY(1px) scale(.97)}.ds-slot:focus-visible{outline:2px solid #ffd100;outline-offset:3px}"
+    },
+    {
+      "name": "Copy Button",
+      "kind": "button",
+      "refersTo": "copy-button",
+      "description": "Red-and-gold in-game button used to copy the install command.",
+      "html": "<button class=\"ds-copy\" type=\"button\"><span>Copy</span></button>",
+      "css": ".ds-copy{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:5px 12px;font:500 .9rem var(--body,'Alegreya Sans',sans-serif);color:var(--gold,#ffd100);background:linear-gradient(180deg,#8d1408,#4e0802);border:1px solid #e0a83a;border-radius:4px;box-shadow:inset 0 1px 0 rgba(255,200,120,.35),0 2px 4px rgba(0,0,0,.5);transition:filter .2s}.ds-copy:hover{filter:brightness(1.2)}.ds-copy:active{transform:translateY(1px)}.ds-copy:focus-visible{outline:2px solid #ffd100;outline-offset:2px}"
+    },
+    {
+      "name": "Chat Window",
+      "kind": "custom",
+      "refersTo": "chat-panel",
+      "description": "Translucent chat panel with semantic channel colours and a cyan copy link; big variant has a command box.",
+      "html": "<div class=\"ds-chat\"><p class=\"ds-chat-line\"><span class=\"ds-sys\">[ompcraft]</span> Install in one line: <button class=\"ds-chat-link\" type=\"button\">[<code>curl … | sh</code>]</button></p><p class=\"ds-chat-line ds-whisper\">Needs WoW: Forever and Stencil Tern.</p></div>",
+      "css": ".ds-chat{max-width:520px;padding:8px 12px;background:rgba(0,0,0,.46);border-radius:4px;font:400 1rem var(--body,'Alegreya Sans',sans-serif);text-shadow:0 1px 1px #000}.ds-chat-line{margin:0 0 6px;color:#ffef7a}.ds-sys{color:#ff9b3d}.ds-whisper{color:#f2a6ff;margin-top:10px}.ds-chat-link{all:unset;cursor:pointer;color:#71d5ff;transition:color .2s}.ds-chat-link code{font:500 .86rem var(--mono,'JetBrains Mono',monospace)}.ds-chat-link:hover{color:#b6eaff;text-decoration:underline;text-underline-offset:.2em}.ds-chat-link:focus-visible{outline:2px solid #ffd100;outline-offset:2px}"
+    },
+    {
+      "name": "Quest Log",
+      "kind": "card",
+      "refersTo": "quest-log",
+      "description": "The single parchment panel: ink text, Marcellus headings, game-style bullet objectives with green counts.",
+      "html": "<article class=\"ds-quest\"><h2>How it works</h2><h3>Objectives</h3><ol class=\"ds-obj\"><li><span>Agents report to Tern</span><span class=\"ds-ok\">1/1</span></li><li><span>Companion writes slot Lua</span><span class=\"ds-ok\">1/1</span></li></ol></article>",
+      "css": ".ds-quest{max-width:520px;padding:46px 44px 40px;color:var(--ink,#2b1a0b);background:var(--parch,#ead8ad);border-radius:6px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6));font:400 1.125rem/1.6 var(--body,'Alegreya Sans',sans-serif)}.ds-quest h2{margin:0 0 .8rem;font:400 2.1rem/1.08 var(--display,Marcellus,Georgia,serif);color:#3a2306}.ds-quest h3{margin:1.4rem 0 .5rem;font:400 1.35rem var(--display,Marcellus,Georgia,serif);color:#3a2306}.ds-obj{list-style:none;margin:0;padding:0;display:grid;gap:6px}.ds-obj li{position:relative;margin-left:1.1em;display:grid;grid-template-columns:1fr auto;gap:18px}.ds-obj li::before{content:'- ';position:absolute;transform:translateX(-1.1em)}.ds-ok{font-variant-numeric:tabular-nums;color:#1d5a07;font-weight:700}"
+    },
+    {
+      "name": "Centre-Screen Message",
+      "kind": "custom",
+      "refersTo": "ui-error-line",
+      "description": "The game's UIErrorsFrame line for copy confirmations.",
+      "html": "<p class=\"ds-uierror\">Install command copied. Paste it in a terminal.</p>",
+      "css": ".ds-uierror{margin:0;text-align:center;font:400 1.35rem var(--display,Marcellus,Georgia,serif);color:var(--gold,#ffd100);text-shadow:0 0 2px #000,0 1px 3px #000}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The HUD Is the Page",
+    "overview": "**Creative North Star: \"The HUD Is the Page\"**\n\nThe site is a WoW screen, not a page about one. A single fixed, full-bleed in-game zone image is the ground; it crossfades to the next zone as the visitor scrolls (Mulgore, The Barrens, Ashenvale, Felwood, Darkshore, Dustwallow Marsh, back to Mulgore). Everything that carries information is recreated game chrome floating over it: a tracker for navigation, a zone plaque, tooltips, a chat window, a parchment quest log, an action bar. The page should read as \"it shipped with the game\", which is also the product's first principle (native over novel).\n\nMood: warm, lit-from-within, a little ceremonial. Gold carries identity and hierarchy; everything else is dark glass over photography, with one parchment panel as the sole light surface. Density is HUD-dense in the chrome (tight rows, 1rem text) and generous in the world (92svh legs, wide gutters so the zone art breathes). Motion is damped and game-native (zone text fades in with a letter-spacing settle, pop-ups slide and shine, tracker rows update); nothing snaps.\n\nThe system carries one durable product commitment: the unofficial / not-affiliated disclosure and the Blizzard trademark footer stay visible, in the game's own idiom (the version line under the action bar, a footer). Real in-game captures of demo agents are the proof; their own window frames are the frame, so the site adds none.",
+    "keyCharacteristics": [
+      "A fixed photographic world, never a flat colour field; chrome floats above it.",
+      "Gold display type in Marcellus, outlined with black text-shadow so it holds on any zone image.",
+      "Dark navy tooltips with a 1px grey-silver edge are the only boxed content container.",
+      "One parchment surface (the quest log) for the single \"read this carefully\" explanation.",
+      "WoW's colour language is semantic: gold = objective/title, green = \"Use:\" lines, red = warning, cyan = clickable chat link.",
+      "Hand-drawn gold/red SVG markers and action icons with dark outlines; no icon font, no glyph icons."
+    ],
+    "rules": [
+      {
+        "name": "The Semantic Colour Rule",
+        "body": "Gold, green, red and cyan each keep their in-game meaning (title/objective, Use:, warning, clickable link). Never use one as decoration for another's job.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Light Surface Rule",
+        "body": "Parchment is the only light panel and appears once, for the quest-log explanation. Everything else is dark glass over the world.",
+        "section": "colors"
+      },
+      {
+        "name": "The World Provides the Colour Rule",
+        "body": "Backgrounds are zone photography under a dark scrim. Don't add flat colour fields or tinted section bands.",
+        "section": "colors"
+      },
+      {
+        "name": "The Outline Rule",
+        "body": "Any text set directly on the world carries a black text-shadow outline (`0 0 1px #000, 0 1px 1px #000, 0 0 3px rgba(0,0,0,.9)` for small HUD text; heavier glow for headings). Text inside tooltips and parchment has none.",
+        "section": "typography"
+      },
+      {
+        "name": "The Display Is Gold Rule",
+        "body": "Marcellus is gold on the world and white inside tooltips. Don't set display type in body colour or in other hues.",
+        "section": "typography"
+      },
+      {
+        "name": "The Scrim-Not-Decoration Rule",
+        "body": "The world scrim (left-weighted dark gradient, bottom fade) and the tracker/bar washes exist to hold text legible over photography and to echo the game's own fades. Gradients appear only as this scrim, as frame metal, and as the sprite gold/red fills; never as decorative colour.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Game Frame Rule",
+        "body": "Frames are 1px bronze (chrome) or 1px silver (tooltips) with an inner black hairline. Never a thicker border, never a coloured card outline.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put information in recreated game chrome (tracker, tooltip, chat, plaque, parchment) over a zone photograph; let the world be the background.",
+      "**Do** keep gold (#ffd100) for titles and objectives, green for \"Use:\" lines, red for warnings and the unofficial notice, cyan for clickable chat links.",
+      "**Do** put a black text-shadow outline on every piece of text that sits directly on the world.",
+      "**Do** frame tooltips with 1px silver (#a7a9b0) over navy, and chrome with 1px bronze (#8a6a2c) plus an inner black hairline.",
+      "**Do** keep corners between 3px and 6px (10px only on the docked bar's top corners).",
+      "**Do** ease every transition with `cubic-bezier(.16, 1, .3, 1)`; set zone/reveal motion between .25s and 2.4s, and drop all animation under `prefers-reduced-motion`.",
+      "**Do** keep the unofficial / not-approved line and Blizzard trademark footer visible, and label every demo agent as demo.",
+      "**Do** use a 2px gold focus outline (3px offset) on all interactive elements and keep keyboard parity for the action bar (keys 1, 2, 3)."
+    ],
+    "donts": [
+      "**Don't** introduce flat colour sections, tinted bands, or a light theme; the only light surface is the parchment quest log.",
+      "**Don't** use gradients as decoration; they are scrim, frame metal, or sprite fill only.",
+      "**Don't** add generic feature-card grids, thick coloured borders, or rounded cards above 6px; tooltips are the container language.",
+      "**Don't** invent a second display face or set display type in anything but Marcellus; use JetBrains Mono for code only.",
+      "**Don't** reframe real in-game captures in a device or window chrome; their own frames are the frame.",
+      "**Don't** use hard offset shadows or coloured box glows; luminous effects are limited to the pop-up shine sweep and hero motes.",
+      "**Don't** use emoji or icon-font glyphs; icons are the inline gold/red outlined SVG sprites."
+    ]
+  }
+}
