@@ -276,6 +276,9 @@ end
 function Frame.SetToplevel(w, v)
 	w.__s.toplevel = v
 end
+function Frame.Raise(w)
+	w.__s.raises = (w.__s.raises or 0) + 1
+end
 function Frame.SetClampedToScreen(w, v)
 	w.__s.clamped = v
 end
@@ -1284,9 +1287,16 @@ function Client:fire(event, ...)
 	end
 end
 
+-- The client's order: PLAYER_REGEN_DISABLED fires before lockdown begins, and
+-- PLAYER_REGEN_ENABLED after it ends (warcraft.wiki.gg API_InCombatLockdown).
 function Client:setCombat(inCombat)
-	self.combat = inCombat
-	self:fire(inCombat and "PLAYER_REGEN_DISABLED" or "PLAYER_REGEN_ENABLED")
+	if inCombat then
+		self:fire("PLAYER_REGEN_DISABLED")
+		self.combat = true
+	else
+		self.combat = false
+		self:fire("PLAYER_REGEN_ENABLED")
+	end
 end
 
 -- Runs virtual time forward, firing timers and OnUpdate scripts.

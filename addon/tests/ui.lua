@@ -254,6 +254,54 @@ return function(H)
 		eq(header.min.face.__s.atlas, "ui-questtrackerbutton-collapse-all")
 	end)
 
+	test("tracker: collapsed, the header counts needs-you, finished and working with the rows' markers", function()
+		local _, c, ns = setup({
+			agents = {
+				A("n1", "waiting_input", "asks", { section = "S" }),
+				A("u1", "idle", "done-one", { section = "S", doneAt = START - 20 }),
+				A("u2", "idle", "done-two", { section = "S", doneAt = START - 10 }),
+				A("w1", "working", "busy-one", { section = "S" }),
+				A("w2", "working", "busy-two", { section = "S" }),
+				A("w3", "working", "busy-three", { section = "S" }),
+				A("i1", "idle", "calm", { section = "T" }),
+				A("x1", "exited", "gone", { section = "T" }),
+			},
+		})
+		c:advance(2.1)
+		local NEEDS = "|TInterface/GossipFrame/AvailableQuestIcon:14:14:0:0|t"
+		local DONE = "|TInterface/GossipFrame/ActiveQuestIcon:14:14:0:0|t"
+		local WORK = "|A:SideInProgressquesticon:14:14:0:0|a"
+		eq(c:tracker()[1].status, "", "expanded: the rows say it")
+
+		click(ns.Tracker.header)
+		eq(kinds(c), "header")
+		local h = c:tracker()[1]
+		eq(h.status, NEEDS .. "1  " .. DONE .. "2  " .. WORK .. "3", "exited and idle are not counted")
+		eq(h.dotShown, false)
+
+		ns.db.show.working = false
+		ns.Tracker:Refresh()
+		eq(c:tracker()[1].status, NEEDS .. "1  " .. DONE .. "2", "a hidden kind is not counted")
+		ns.db.show.working = true
+
+		ns.Store:MarkSeen(ns.Store.byId.u1)
+		ns.Store:MarkSeen(ns.Store.byId.u2)
+		ns.Tracker:Refresh()
+		eq(c:tracker()[1].status, NEEDS .. "1  " .. WORK .. "3")
+
+		put(ns, { A("i1", "idle", "calm", { section = "T" }) })
+		eq(c:tracker()[1].status, "", "nothing needs a look")
+
+		put(ns, { A("n1", "waiting_input", "asks", { section = "S" }) }, { at = START - 400 })
+		h = c:tracker()[1]
+		eq(h.status, "stale", "a link problem wins over counts that may be old")
+		eq(h.dotShown, true)
+
+		click(ns.Tracker.header.min)
+		eq(ns.db.collapsed, false)
+		eq(ns.errorCount, 0)
+	end)
+
 	test("tracker: elapsed from since, none when unknown, ticking only while shown", function()
 		local _, c, ns = setup({ install = false })
 		put(ns, {
@@ -560,14 +608,27 @@ return function(H)
 		lacks(c:chatText(), "/oc detail")
 	end)
 
-	test("tracker: sits on top of the chat frame and unit frames, with no box", function()
+	test("layering: the tracker is on the objective tracker's layer, the agent page is a window, pop-ups stay on top", function()
 		local _, c, ns = setup({ install = false })
 		local f = c.env.OmpcraftTracker
-		eq(f.__s.strata, "HIGH")
+		eq(f.__s.strata, "LOW", "under UI panels and the map, like ObjectiveTrackerFrame")
 		eq(f.__s.backdrop, nil, "no backdrop")
 		eq(f.__s.template, nil)
 		eq(f.__s.clamped, true)
 		eq(f:GetWidth(), 260)
+
+		put(ns, { A("a", "waiting_input", "asker", { section = "S" }) })
+		ns.Detail:Open("a")
+		local d = c.env.OmpcraftDetail
+		eq(d.__s.strata, "MEDIUM", "the layer of the character frame and bags")
+		eq(d.__s.toplevel, true)
+		eq(d.__s.raises, 1, "opening brings it in front of an open panel")
+		ns.Detail:Open("a")
+		eq(d.__s.raises, 2)
+
+		ns:Fire("TOAST", { id = 1, kind = "input", agent = "a", text = "asker needs you" })
+		eq(c:toastFrame(1).__s.strata, "DIALOG")
+		eq(ns.errorCount, 0)
 	end)
 
 	----------------------------------------------------------------------
@@ -738,7 +799,6 @@ return function(H)
 		eq(ns.Detail.paper.bg.__s.atlas, "QuestBG-Parchment")
 		eq(ns.Detail.scroll.__s.template, "ScrollFrameTemplate")
 		eq(ns.Detail.scroll.__s.scrollChild, ns.Detail.content)
-		eq(f.__s.strata, "HIGH")
 		eq(ns.Detail.stateText:GetText(), "Needs you \194\183 1m")
 		eq(ns.Detail.stateText.__s.font, "QuestFont", "the plain quest font, not the blackletter heading font")
 		truthy(ns.Detail.stateText:GetParent() == ns.Detail.paper and ns.Detail.stateText:GetParent() ~= ns.Detail.content, "outside the scroll content")

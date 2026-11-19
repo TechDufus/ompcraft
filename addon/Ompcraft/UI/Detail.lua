@@ -359,7 +359,7 @@ function Detail:Create()
 	f:SetSize(width, height)
 	CONTENT_W = width - CONTENT_INSET
 	f:SetPoint("CENTER", UIParent, "CENTER", -200, 0)
-	f:SetFrameStrata("HIGH")
+	f:SetFrameStrata("MEDIUM")
 	f:SetToplevel(true)
 	f:SetClampedToScreen(true)
 	f:SetMovable(true)
@@ -471,6 +471,7 @@ function Detail:Open(id)
 	self.agentId = id
 	self.scroll:SetVerticalScroll(0)
 	self.frame:Show()
+	self.frame:Raise()
 	self:Refresh()
 end
 
