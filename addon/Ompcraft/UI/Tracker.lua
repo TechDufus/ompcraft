@@ -24,6 +24,7 @@ local LINE_CHARS = 46
 local HOVER_SEEN = 1 -- seconds of hovering that marks a turn seen
 local CLICK_AFTER_DRAG = 0.3
 local ANCHOR_GAP = 12 -- under Blizzard's tracker
+local COMBAT_ALPHA = 0.35 -- "Fade during combat"
 local FALLBACK_X, FALLBACK_Y = -24, -300 -- top right
 -- Top left: clear of the default player frame (bottom centre on Edit Mode's Modern
 -- layout; top left at (4, -4) on its Classic layout, so it starts below that).
@@ -49,7 +50,29 @@ local STATUS_TONE = {
 	bad = { 0.9, 0.25, 0.25 },
 }
 
+-- The collapsed header's one line: the rows' own quest markers with counts,
+-- needs you first (Blizzard's |T / |A markup, TextureUtil.lua).
+local SUMMARY = {
+	{ kind = "needs", markup = "|T" .. Style.TEXTURE.offer .. ":14:14:0:0|t" },
+	{ kind = "unseen", markup = "|T" .. Style.TEXTURE.turnIn .. ":14:14:0:0|t" },
+	{ kind = "working", markup = "|A:" .. Style.ATLAS.inProgress .. ":14:14:0:0|a" },
+}
+
+-- Kinds the settings hide (db.show) are not counted; "" when nothing needs a look.
+local function summaryText()
+	local counts, show = ns.Store:Counts(), ns.db.show
+	local parts = {}
+	for _, s in ipairs(SUMMARY) do
+		local n = counts[s.kind]
+		if show[s.kind] and n > 0 then
+			parts[#parts + 1] = s.markup .. n
+		end
+	end
+	return table.concat(parts, "  ")
+end
+
 Tracker.sections, Tracker.blocks, Tracker.idles, Tracker.labels = {}, {}, {}, {}
+Tracker.inCombat = false
 Tracker.shown = {} -- what the last Refresh put on screen, top to bottom
 
 ------------------------------------------------------------------------
@@ -576,12 +599,19 @@ function Tracker:RefreshHeader()
 	local f, h = self.frame, self.header
 	local db = ns.db
 	local text, tone = ns.Link:StatusText()
-	if text == "live" then
+	if db.collapsed and (tone == "good" or tone == "info") then
+		-- Folded to one line: what needs a look. A link problem wins below, since
+		-- the counts may be stale.
+		h.status:SetText(summaryText())
+		Style.Color(h.status, Style.color.Normal)
+		h.dot:Hide()
+	elseif text == "live" then
 		h.status:SetText("")
 		h.dot:Hide() -- restraint: nothing to say while the link is fine
 	else
 		local c = STATUS_TONE[tone] or STATUS_TONE.info
 		h.status:SetText(text)
+		Style.Color(h.status, Style.color.Complete)
 		h.dot:SetColorTexture(c[1], c[2], c[3], 1)
 		h.dot:Show()
 	end
@@ -898,7 +928,7 @@ function Tracker:ShouldShow()
 	if not db.shown then
 		return false
 	end
-	if db.hideInCombat and InCombatLockdown() then
+	if db.hideInCombat and self.inCombat then
 		return false
 	end
 	if db.hideInInstance and inHiddenInstance() then
@@ -924,6 +954,7 @@ function Tracker:ApplyVisibility()
 	else
 		self.frame:Hide()
 	end
+	self.frame:SetAlpha((ns.db.fadeInCombat and self.inCombat) and COMBAT_ALPHA or 1)
 end
 
 -- A setting changed: show or hide, and draw again.
@@ -1129,7 +1160,8 @@ function Tracker:Create()
 	local f = CreateFrame("Frame", "OmpcraftTracker", UIParent)
 	self.frame = f
 	f:SetSize(WIDTH, HEADER_H)
-	f:SetFrameStrata("HIGH")
+	-- Blizzard's ObjectiveTrackerFrame layer: UI panels (MEDIUM) and the map draw over it.
+	f:SetFrameStrata("LOW")
 	f:SetClampedToScreen(true)
 	f:SetMovable(true)
 	f:SetDontSavePosition(true)
@@ -1206,6 +1238,7 @@ ns:Listen("LOADED", function()
 	Tracker:Create()
 	Tracker.frame:SetScale(ns.db.scale)
 	Tracker.frameScale = ns.db.scale
+	Tracker.inCombat = InCombatLockdown() -- a /reload in the middle of a fight
 	Tracker:ApplyVisibility()
 end)
 
@@ -1216,8 +1249,19 @@ ns:Listen("SNAPSHOT", function()
 	end
 end)
 
--- The hide rules: combat, and dungeons, raids and PvP.
-for _, event in ipairs({ "PLAYER_REGEN_DISABLED", "PLAYER_REGEN_ENABLED", "PLAYER_ENTERING_WORLD", "ZONE_CHANGED_NEW_AREA" }) do
+-- Combat lockdown begins only after PLAYER_REGEN_DISABLED fires (InCombatLockdown
+-- is still false inside it) and ends before PLAYER_REGEN_ENABLED, so the events
+-- themselves say whether we are fighting.
+ns:On("PLAYER_REGEN_DISABLED", function()
+	Tracker.inCombat = true
+	Tracker:ApplyVisibility()
+end)
+ns:On("PLAYER_REGEN_ENABLED", function()
+	Tracker.inCombat = false
+	Tracker:ApplyVisibility()
+end)
+-- The instance rule: dungeons, raids and PvP.
+for _, event in ipairs({ "PLAYER_ENTERING_WORLD", "ZONE_CHANGED_NEW_AREA" }) do
 	ns:On(event, function()
 		Tracker:ApplyVisibility()
 	end)

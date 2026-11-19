@@ -107,7 +107,7 @@ function Config:Register()
 	local function positionOptions()
 		local container = Settings.CreateControlTextContainer()
 		container:Add("topleft", "Top left", "Fixed in the top left, below the default player frame.")
-		container:Add("tracker", "Under quest objectives", "Sits just below Blizzard's objective tracker, and follows it.")
+		container:Add("tracker", "Under quest objectives", "Sits just below Blizzard's objective tracker, and follows it. A long quest list leaves no room there: use Top left, or click the Agents header to fold the tracker into one line of counts.")
 		container:Add("corner", "Top right", "Fixed in the top right corner of the screen.")
 		container:Add("free", "Where I drag it", "Unlocks the tracker so you can drag it anywhere.")
 		return container:GetData()
@@ -147,6 +147,7 @@ function Config:Register()
 	checkbox("onlyWhenActive", db, "onlyWhenActive", "Only show the tracker when something needs me or is working", false,
 		"Hides it entirely otherwise. /oc show, the header click and the AddOn button still bring it up.")
 	checkbox("hideInCombat", db, "hideInCombat", "Hide during combat", false)
+	checkbox("fadeInCombat", db, "fadeInCombat", "Fade during combat", true, "Dims the tracker to 35% while you fight, so nameplates stay readable. Hide during combat wins when both are on.")
 	checkbox("hideInInstance", db, "hideInInstance", "Hide in dungeons, raids and PvP", false)
 
 	----------------------------------------------------------------------

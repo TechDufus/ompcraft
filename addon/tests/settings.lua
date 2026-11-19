@@ -125,10 +125,10 @@ return function(H)
 			"Needs you", "Working", "Finished, not yet seen", "Exited / failed", "Idle summary line",
 			"Current activity", "Todo progress", "Turn time & cost", "Reply preview",
 			"Group by Tern session", "Only show the tracker when something needs me or is working",
-			"Hide during combat", "Hide in dungeons, raids and PvP",
+			"Hide during combat", "Fade during combat", "Hide in dungeons, raids and PvP",
 			"Pop-up: needs you", "Pop-up: finished", "Pop-up: failed or exited", "Pop-up: updates", "Sound", "Chat line",
 		}, "|"))
-		eq(#initializers(c, "SettingsCheckboxControlTemplate"), 20)
+		eq(#initializers(c, "SettingsCheckboxControlTemplate"), 21)
 		eq(#initializers(c, "SettingsSliderControlTemplate"), 2)
 		eq(#initializers(c, "SettingsDropdownControlTemplate"), 1)
 		eq(#initializers(c, "SettingButtonControlTemplate"), 3)
@@ -151,6 +151,7 @@ return function(H)
 		eq(db.grouped, true)
 		eq(db.onlyWhenActive, false)
 		eq(db.hideInCombat, false)
+		eq(db.fadeInCombat, true)
 		eq(db.hideInInstance, false)
 		-- the settings are the database fields themselves
 		eq(get(c, ns, "scale"), 1)
@@ -627,6 +628,38 @@ return function(H)
 		eq(ns.errorCount, 0)
 	end)
 
+	test("settings: fade during combat, on by default; full again after; hiding wins", function()
+		local _, c, ns = setup({ install = false })
+		put(ns, { A("w", "working", "busy") })
+		local f = c.env.OmpcraftTracker
+		eq(f.__s.alpha, 1, "full before any fight")
+		c:setCombat(true)
+		eq(shown(c), true)
+		eq(f.__s.alpha, 0.35, "dims on PLAYER_REGEN_DISABLED itself, before lockdown begins")
+		c:setCombat(false)
+		eq(f.__s.alpha, 1)
+
+		set(c, ns, "fadeInCombat", false)
+		c:setCombat(true)
+		eq(f.__s.alpha, 1, "off: no fade")
+		set(c, ns, "fadeInCombat", true)
+		eq(f.__s.alpha, 0.35, "turned on mid-fight: dims at once")
+		set(c, ns, "hideInCombat", true)
+		eq(shown(c), false, "hiding wins")
+		c:setCombat(false)
+		eq(shown(c), true)
+		eq(f.__s.alpha, 1)
+
+		-- /reload in the middle of a fight
+		set(c, ns, "hideInCombat", false)
+		c:setCombat(true)
+		c:reload()
+		eq(c.env.OmpcraftTracker.__s.alpha, 0.35)
+		c:setCombat(false)
+		eq(c.env.OmpcraftTracker.__s.alpha, 1)
+		eq(c:ns().errorCount, 0)
+	end)
+
 	test("settings: hide in dungeons, raids and PvP", function()
 		local _, c, ns = setup({ install = false })
 		put(ns, { A("w", "working", "busy") })
@@ -874,6 +907,8 @@ return function(H)
 		eq(ns.MigrateDB({ version = 4, maxHeight = 801 }).maxHeight, 440)
 		eq(ns.MigrateDB({ version = 4, maxHeight = 200 }).maxHeight, 200)
 		eq(ns.MigrateDB({ version = 4, anchor = "corner" }).anchor, "corner")
+		eq(ns.MigrateDB({ version = 4, hideInCombat = true }).fadeInCombat, true, "existing installs get the fade")
+		eq(ns.MigrateDB({ version = 4, fadeInCombat = false }).fadeInCombat, false, "a deliberate off survives")
 	end)
 
 	test("settings: a v3 save loads with the dragged spot, scale and lock it had", function()

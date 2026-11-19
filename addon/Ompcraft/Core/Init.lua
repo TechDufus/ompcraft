@@ -164,7 +164,7 @@ function ns.MigrateDB(db)
 	if type(db.maxHeight) ~= "number" or db.maxHeight < 200 or db.maxHeight > 800 then
 		db.maxHeight = 440
 	end
-	for key, default in pairs({ grouped = true, onlyWhenActive = false, hideInCombat = false, hideInInstance = false }) do
+	for key, default in pairs({ grouped = true, onlyWhenActive = false, hideInCombat = false, fadeInCombat = true, hideInInstance = false }) do
 		if type(db[key]) ~= "boolean" then
 			db[key] = default
 		end

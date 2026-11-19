@@ -97,7 +97,7 @@ macOS support is planned. The companion builds and its launchd service is writte
 </tr>
 <tr>
 <td><b>Pop-ups that wait for combat to end.</b> Finished, needs-you, failed and exited, with the turn's time, tokens and cost. Click one to open that agent.</td>
-<td><b>Make it yours.</b> <b>Options › AddOns › Ompcraft</b> or <code>/oc config</code>: placement, lock, scale and height; which states and detail lines show; hide in combat or instances; which pop-ups, sounds and chat lines you get.</td>
+<td><b>Make it yours.</b> <b>Options › AddOns › Ompcraft</b> or <code>/oc config</code>: placement, lock, scale and height; which states and detail lines show; fade or hide in combat, hide in instances; which pop-ups, sounds and chat lines you get. Click the Agents header to fold the tracker into one line of counts.</td>
 </tr>
 </table>
 
