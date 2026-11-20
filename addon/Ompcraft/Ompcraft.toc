@@ -2,7 +2,7 @@
 ## Title: Ompcraft
 ## Notes: Shows your omp coding agents (run in Stencil Tern) inside the game, in the look of the objective tracker. Read-only. Needs the ompcraft companion running on this computer.
 ## Author: TechDufus
-## Version: 0.1.0
+## Version: 0.2.0
 ## IconTexture: Interface\Icons\INV_Misc_QuestionMark
 ## SavedVariables: OmpcraftDB
 ## AddonCompartmentFunc: Ompcraft_OnAddonCompartmentClick

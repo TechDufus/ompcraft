@@ -10,7 +10,7 @@ import (
 )
 
 // version is overridden at build time with -ldflags "-X main.version=...".
-var version = "0.1.0"
+var version = "0.2.0"
 
 // channel is "release" for binaries built by the release workflow (-ldflags
 // "-X main.channel=release") and "source" for everything else. Only release

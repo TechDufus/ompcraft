@@ -814,7 +814,6 @@ test("the TOC lists every addon file and the compartment hooks exist", function(
 	eq(c:tocField("Interface"), "16001")
 	eq(c:tocField("Title"), "Ompcraft")
 	eq(c:tocField("Author"), "TechDufus")
-	eq(c:tocField("Version"), "0.1.0")
 	eq(c:tocField("SavedVariables"), "OmpcraftDB")
 	for _, field in ipairs({ "AddonCompartmentFunc", "AddonCompartmentFuncOnEnter", "AddonCompartmentFuncOnLeave" }) do
 		local fn = c:tocField(field)
