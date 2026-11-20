@@ -1160,8 +1160,10 @@ function Tracker:Create()
 	local f = CreateFrame("Frame", "OmpcraftTracker", UIParent)
 	self.frame = f
 	f:SetSize(WIDTH, HEADER_H)
-	-- Blizzard's ObjectiveTrackerFrame layer: UI panels (MEDIUM) and the map draw over it.
-	f:SetFrameStrata("LOW")
+	-- Under everything Blizzard draws on UIParent: party and raid frames (LOW, and
+	-- placed on the left edge where Top left sits), UI panels and the map. The
+	-- tracker is passive text; it must never cover a click target.
+	f:SetFrameStrata("BACKGROUND")
 	f:SetClampedToScreen(true)
 	f:SetMovable(true)
 	f:SetDontSavePosition(true)

@@ -608,10 +608,10 @@ return function(H)
 		lacks(c:chatText(), "/oc detail")
 	end)
 
-	test("layering: the tracker is on the objective tracker's layer, the agent page is a window, pop-ups stay on top", function()
+	test("layering: the tracker is under unit frames and panels, the agent page is a window, pop-ups stay on top", function()
 		local _, c, ns = setup({ install = false })
 		local f = c.env.OmpcraftTracker
-		eq(f.__s.strata, "LOW", "under UI panels and the map, like ObjectiveTrackerFrame")
+		eq(f.__s.strata, "BACKGROUND", "under party and raid frames (LOW), UI panels and the map")
 		eq(f.__s.backdrop, nil, "no backdrop")
 		eq(f.__s.template, nil)
 		eq(f.__s.clamped, true)
